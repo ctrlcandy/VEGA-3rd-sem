@@ -13,9 +13,8 @@ Philosophers::Philosophers() {
 }
 
 void Philosophers::print_msg(const std::string &msg) {
-    cout_mutex.lock();
+    std::lock_guard<std::mutex> guard(cout_mutex);
     std::cout << msg << std::flush;
-    cout_mutex.unlock();
 }
 
 void Philosophers::create_msg(std::ostringstream &ostr, const std::string &id, const std::string &msg) {
